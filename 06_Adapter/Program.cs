@@ -23,10 +23,13 @@ namespace Coding.Exercise
 
     public class SquareToRectangleAdapter : IRectangle
     {
+        public int Width { get; }
+        public int Height { get; }
+
         public SquareToRectangleAdapter(Square square)
         {
-            // todo
+            Width = square.Side;
+            Height = square.Side;
         }
-        // todo
     }
 }

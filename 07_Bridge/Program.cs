@@ -2,31 +2,45 @@
 
 namespace Coding.Exercise
 {
+    public interface IRenderer
+    {
+        string WhatToRenderAs { get; }
+    }
     public abstract class Shape
     {
+        public IRenderer Renderer;
         public string Name { get; set; }
     }
 
     public class Triangle : Shape
     {
-        public Triangle() => Name = "Triangle";
+        public Triangle(IRenderer renderer)
+        {
+            Name = "Triangle";
+            Renderer = renderer;
+        }
+
+        public override string ToString() => $"Drawing {Name} as {Renderer.WhatToRenderAs}";
     }
 
     public class Square : Shape
     {
-        public Square() => Name = "Square";
+        public Square(IRenderer renderer)
+        {
+            Name = "Square";
+            Renderer = renderer;
+        }
+
+        public override string ToString() => $"Drawing {Name} as {Renderer.WhatToRenderAs}";
     }
 
-    public class VectorSquare : Square
+    public class VectorRenderer : IRenderer
     {
-        public override string ToString() => "Drawing {Name} as lines";
+        string IRenderer.WhatToRenderAs => "lines";
     }
 
-    public class RasterSquare : Square
+    public class RasterRenderer : IRenderer
     {
-        public override string ToString() => "Drawing {Name} as pixels";
+        string IRenderer.WhatToRenderAs => "pixels";
     }
-
-    // imagine VectorTriangle and RasterTriangle are here too
 }
-

@@ -24,19 +24,29 @@ namespace Coding.Exercise
 
     public class Dragon // no need for interfaces
     {
+        private Bird bird = new Bird();
+        private Lizard lizard = new Lizard();
+        private int age;
+
         public int Age
         {
-            // todo :)
+            get { return age; }
+            set
+            {
+                age = value;
+                bird.Age = age;
+                lizard.Age = age;
+            }
         }
 
         public string Fly()
         {
-            // todo
+            return bird.Fly();
         }
 
         public string Crawl()
         {
-            // todo
+            return lizard.Crawl();
         }
     }
 }

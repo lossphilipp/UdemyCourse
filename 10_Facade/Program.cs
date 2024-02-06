@@ -80,9 +80,33 @@ namespace Coding.Exercise
 
     public class MagicSquareGenerator
     {
+        private readonly Generator generator;
+        private readonly Splitter splitter;
+        private readonly Verifier verifier;
+
+        public MagicSquareGenerator()
+        {
+            generator = new Generator();
+            splitter = new Splitter();
+            verifier = new Verifier();
+        }
+
         public List<List<int>> Generate(int size)
         {
-            // todo
+            List<List<int>> magicSquare = new List<List<int>>();
+            for (int i = 0; i < size; i++)
+            {
+                List<int> row = generator.Generate(size);
+                magicSquare.Add(row);
+            }
+
+            List<List<int>> splittedMatrix = splitter.Split(magicSquare);
+            if (!verifier.Verify(splittedMatrix))
+            {
+                return Generate(size);
+            }
+
+            return magicSquare;
         }
     }
 }

@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10_Facade", "10_Facade\10_F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11_Flyweight", "11_Flyweight\11_Flyweight.csproj", "{04E9F938-E6C1-468E-B5E6-96E17A8B153E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12_Proxy", "12_Proxy\12_Proxy.csproj", "{EBDBB176-25BF-42D0-BE0E-77622B545C0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12_Proxy", "12_Proxy\12_Proxy.csproj", "{EBDBB176-25BF-42D0-BE0E-77622B545C0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13_Chain-of-Responsibility", "13_Chain-of-Responsibility\13_Chain-of-Responsibility.csproj", "{80040C3C-BA3D-4F9D-A946-ABB9943FFDC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{EBDBB176-25BF-42D0-BE0E-77622B545C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBDBB176-25BF-42D0-BE0E-77622B545C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBDBB176-25BF-42D0-BE0E-77622B545C0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80040C3C-BA3D-4F9D-A946-ABB9943FFDC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80040C3C-BA3D-4F9D-A946-ABB9943FFDC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80040C3C-BA3D-4F9D-A946-ABB9943FFDC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80040C3C-BA3D-4F9D-A946-ABB9943FFDC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

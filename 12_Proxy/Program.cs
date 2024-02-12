@@ -24,11 +24,38 @@ namespace Coding.Exercise
 
     public class ResponsiblePerson
     {
+        private Person person;
+
         public ResponsiblePerson(Person person)
         {
-            // todo
+            this.person = person;
         }
 
-        public int Age { /* todo implement property */ }
+        public int Age
+        {
+            get { return person.Age; }
+            set { person.Age = value; }
+        }
+
+        public string Drink()
+        {
+            if (Age >= 18)
+                return person.Drink();
+            else
+                return "too young";
+        }
+
+        public string Drive()
+        {
+            if (Age >= 16)
+                return person.Drive();
+            else
+                return "too young";
+        }
+
+        public string DrinkAndDrive()
+        {
+            return "dead";
+        }
     }
 }

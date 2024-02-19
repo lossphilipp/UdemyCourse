@@ -21,7 +21,27 @@ namespace Coding.Exercise
 
         public void Process(Command c)
         {
-            // todo
+            switch (c.TheAction)
+            {
+                case Command.Action.Deposit:
+                    Balance += c.Amount;
+                    c.Success = true;
+                    break;
+                case Command.Action.Withdraw:
+                    if (Balance >= c.Amount)
+                    {
+                        Balance -= c.Amount;
+                        c.Success = true;
+                    }
+                    else
+                    {
+                        c.Success = false;
+                    }
+                    break;
+                default:
+                    c.Success = false;
+                    break;
+            }
         }
     }
 }

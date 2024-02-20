@@ -1,24 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Coding.Exercise
 {
     public class Participant
     {
         public int Value { get; set; }
+        public Mediator Mediator;
 
         public Participant(Mediator mediator)
         {
-            // todo
+            Mediator = mediator;
+            Mediator.people.Add(this);
         }
 
         public void Say(int n)
         {
-            // todo
+            Mediator.IncreaseValue(this, n);
         }
     }
 
     public class Mediator
     {
-        // todo
+        public List<Participant> people = new List<Participant>();
+
+        public void IncreaseValue(Participant source, int value)
+        {
+            foreach (Participant p in people)
+            {
+                if (source != p)
+                {
+                    p.Value += value;
+                }
+            }
+        }
     }
 }

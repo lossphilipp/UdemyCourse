@@ -16,7 +16,12 @@ namespace Coding.Exercise
 
     public class Memento
     {
-        // todo
+        public List<Token> state { get; }
+
+        public Memento(List<Token> current)
+        {
+            state = current;
+        }
     }
 
     public class TokenMachine
@@ -25,17 +30,29 @@ namespace Coding.Exercise
 
         public Memento AddToken(int value)
         {
-            // todo
+            Tokens.Add(new Token(value));
+            return SaveState();
         }
 
         public Memento AddToken(Token token)
         {
-            // todo (yes, please do both overloads)
+            Tokens.Add(token);
+            return SaveState();
+        }
+
+        private Memento SaveState()
+        {
+            List<Token> list = new List<Token>();
+            foreach (Token token in Tokens)
+            {
+                list.Add(new Token(token.Value));
+            }
+            return new Memento(list);
         }
 
         public void Revert(Memento m)
         {
-            // todo
+            Tokens = m.state;
         }
     }
 }

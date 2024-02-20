@@ -36,6 +36,26 @@ namespace Coding.Exercise
 
     public class NullLog : ILog
     {
-        // todo
+        private int number = 2;
+
+        public int RecordLimit
+        {
+            get { return number; }
+        }
+
+        public int RecordCount
+        {
+            get
+            {
+                ++number;
+                return number % 3;
+            }
+            set { }
+        }
+
+        public void LogInfo(string message)
+        {
+            
+        }
     }
 }

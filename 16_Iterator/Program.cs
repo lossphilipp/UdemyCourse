@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Coding.Exercise
 {
@@ -26,7 +27,22 @@ namespace Coding.Exercise
         {
             get
             {
-                // todo!
+                List<T> result = new List<T>();
+                Stack<Node<T>> stack = new Stack<Node<T>>();
+                stack.Push(this);
+
+                while (stack.Count > 0)
+                {
+                    Node<T> current = stack.Pop();
+                    result.Add(current.Value);
+
+                    if (current.Right != null)
+                        stack.Push(current.Right);
+                    if (current.Left != null)
+                        stack.Push(current.Left);
+                }
+
+                return result;
             }
         }
     }

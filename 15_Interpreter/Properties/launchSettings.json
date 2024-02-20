@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "15_Interpreter": {
+      "commandName": "Project"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    }
+  }
+}

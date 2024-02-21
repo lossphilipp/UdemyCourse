@@ -10,12 +10,23 @@ namespace Coding.Exercise
 
     public class OrdinaryDiscriminantStrategy : IDiscriminantStrategy
     {
-        // todo
+        public double CalculateDiscriminant(double a, double b, double c)
+        {
+            return ((b * b) - (4 * a * c));
+        }
     }
 
     public class RealDiscriminantStrategy : IDiscriminantStrategy
     {
-        // todo (return NaN on negative discriminant!)
+        public double CalculateDiscriminant(double a, double b, double c)
+        {
+            double solution = ((b * b) - (4 * a * c));
+            if (solution < 0)
+            {
+                return double.NaN;
+            }
+            return solution;
+        }
     }
 
     public class QuadraticEquationSolver
@@ -29,7 +40,23 @@ namespace Coding.Exercise
 
         public Tuple<Complex, Complex> Solve(double a, double b, double c)
         {
-            // todo
+            double discriminant = strategy.CalculateDiscriminant(a, b, c);
+
+            Complex plusResult;
+            Complex minusResult;
+
+            if (discriminant < 0)
+            {
+                Complex imaginaryPart = Complex.Sqrt(new Complex(discriminant, 0));
+                plusResult = (-b + imaginaryPart) / (2 * a);
+                minusResult = (-b - imaginaryPart) / (2 * a);
+            }
+            else
+            {
+                plusResult = (-b + Complex.Sqrt(discriminant)) / (2 * a);
+                minusResult = (-b - Complex.Sqrt(discriminant)) / (2 * a);
+            }
+            return new Tuple<Complex, Complex>(plusResult, minusResult);
         }
     }
 }

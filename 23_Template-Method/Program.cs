@@ -41,11 +41,37 @@ namespace Coding.Exercise
 
     public class TemporaryCardDamageGame : CardGame
     {
-        // todo
+        public TemporaryCardDamageGame(Creature[] creatures) : base(creatures)
+        {
+        }
+
+        protected override void Hit(Creature attacker, Creature other)
+        {
+            int newHealt = other.Health - attacker.Attack;
+            if (newHealt <= 0)
+            {
+                other.Health = 0;
+            }
+        }
     }
 
     public class PermanentCardDamage : CardGame
     {
-        // todo
+        public PermanentCardDamage(Creature[] creatures) : base(creatures)
+        {
+        }
+
+        protected override void Hit(Creature attacker, Creature other)
+        {
+            int newHealt = other.Health - attacker.Attack;
+            if (newHealt <= 0)
+            {
+                other.Health = 0;
+            }
+            else
+            {
+                other.Health = newHealt;
+            }
+        }
     }
 }

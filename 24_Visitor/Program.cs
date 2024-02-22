@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Text;
 
 namespace Coding.Exercise
 {
     public abstract class ExpressionVisitor
     {
-        // todo
+        public abstract void Visit(Value value);
+        public abstract void Visit(AdditionExpression ae);
+        public abstract void Visit(MultiplicationExpression me);
     }
 
     public abstract class Expression
@@ -21,7 +24,10 @@ namespace Coding.Exercise
             TheValue = value;
         }
 
-        // todo
+        public override void Accept(ExpressionVisitor ev)
+        {
+            ev.Visit(this);
+        }
     }
 
     public class AdditionExpression : Expression
@@ -34,7 +40,10 @@ namespace Coding.Exercise
             RHS = rhs;
         }
 
-        // todo
+        public override void Accept(ExpressionVisitor ev)
+        {
+            ev.Visit(this);
+        }
     }
 
     public class MultiplicationExpression : Expression
@@ -47,29 +56,40 @@ namespace Coding.Exercise
             RHS = rhs;
         }
 
-        // todo
+        public override void Accept(ExpressionVisitor ev)
+        {
+            ev.Visit(this);
+        }
     }
 
     public class ExpressionPrinter : ExpressionVisitor
     {
+        private StringBuilder sb = new StringBuilder();
+
         public override void Visit(Value value)
         {
-            // todo
+            sb.Append(value.TheValue);
         }
 
         public override void Visit(AdditionExpression ae)
         {
-            // todo
+            sb.Append("(");
+            ae.LHS.Accept(this);
+            sb.Append("+");
+            ae.RHS.Accept(this);
+            sb.Append(")");
         }
 
         public override void Visit(MultiplicationExpression me)
         {
-            // todo
+            me.LHS.Accept(this);
+            sb.Append("*");
+            me.RHS.Accept(this);
         }
 
         public override string ToString()
         {
-            // todo
+            return sb.ToString();
         }
     }
 }
